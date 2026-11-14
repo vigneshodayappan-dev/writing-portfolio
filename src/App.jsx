@@ -160,10 +160,10 @@ function App() {
         {/* HERO */}
         <section className="hero" id="home">
           <img
-            className="hero-background"
-            src="/hero-image.png"
-            alt=""
-          />
+  className="hero-background"
+  src={`${import.meta.env.BASE_URL}hero-image.png`}
+  alt="Writing portfolio hero background"
+/>
           <div className="hero-overlay"></div>
 
           <motion.div
