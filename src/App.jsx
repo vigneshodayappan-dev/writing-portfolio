@@ -123,6 +123,16 @@ const accordionItems = [
 ];
 
 function App() {
+  const scrollToSection = (event, sectionId) => {
+  event.preventDefault();
+
+  document.getElementById(sectionId)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+
+  setMenuOpen(false);
+};
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(0);
   const [openAccordion, setOpenAccordion] = useState(0);
@@ -145,15 +155,33 @@ function App() {
           {menuOpen ? <X /> : <Menu />}
         </button>
 
-        <nav className={menuOpen ? "nav-links open" : "nav-links"}>
-          <a href="#home" onClick={closeMenu}>Home</a>
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#work" onClick={closeMenu}>Selected work</a>
-          <a href="#approach" onClick={closeMenu}>My approach</a>
-          <a href="#contact" className="nav-contact" onClick={closeMenu}>
-            Let's talk <ArrowUpRight size={15} />
-          </a>
-        </nav>
+
+<nav className={menuOpen ? "nav-links open" : "nav-links"}>
+  <a href="#home" onClick={(event) => scrollToSection(event, "home")}>
+    Home
+  </a>
+
+  <a href="#about" onClick={(event) => scrollToSection(event, "about")}>
+    About
+  </a>
+
+  <a href="#work" onClick={(event) => scrollToSection(event, "work")}>
+    Selected work
+  </a>
+
+  <a href="#approach" onClick={(event) => scrollToSection(event, "approach")}>
+    My approach
+  </a>
+
+  <a
+    href="#contact"
+    className="nav-contact"
+    onClick={(event) => scrollToSection(event, "contact")}
+  >
+    Let's talk <ArrowUpRight size={15} />
+  </a>
+</nav>
+
       </header>
 
       <main>
